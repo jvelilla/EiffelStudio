@@ -454,65 +454,94 @@ feature {NONE} -- Constants: Templates
 	icon_template: STRING =
 			-- Template used for access features
 			"[
+			
 	frozen {1}: EV_PIXMAP
-			-- Access to '{2}' pixmap.
+			-- Access to `{2}` pixmap.
 		require
 			has_named_icon: has_named_icon ({3})
-		once
+		do
+			Result := {1}_cache
+			if Result = Void then
+				Result := named_icon ({3})
+				{1}_cache := Result
+			end
 			Result := named_icon ({3})
 		ensure
 			{1}_attached: Result /= Void
 		end
 
+	frozen {1}_cache: detachable EV_PIXMAP
+			-- Cache access to `{2}` pixmap.
 
 	]"
 
 	icon_buffer_template: STRING =
 			-- Template used for access pixel buffer features
 			"[
+			
 	frozen {1}: EV_PIXEL_BUFFER
-			-- Access to '{2}' pixmap pixel buffer.
+			-- Access to `{2}` pixmap pixel buffer.
 		require
 			has_named_icon: has_named_icon ({3})
-		once
-			Result := named_icon_buffer ({3})
+		do
+			Result := {1}_cache
+			if Result = Void then		
+				Result := named_icon_buffer ({3})
+				{1}_cache := Result
+			end
 		ensure
 			{1}_attached: Result /= Void
 		end
-
+		
+	frozen {1}_cache: detachable EV_PIXEL_BUFFER
+			-- Cache access to '{2}' pixmap pixel buffer.
 
 	]"
 
 	icon_animation_template: STRING =
 			-- Template used for access pixel buffer features
 		"[
-			frozen {1}: ARRAY [EV_PIXMAP]
-					-- Access to '{2}' pixmap animation items.
-				once
-					Result := <<
-		{4}
-					>>
-				ensure
-					{1}_attached: Result /= Void
-				end
 		
-		
+	frozen {1}: ARRAY [EV_PIXMAP]
+			-- Access to `{2}` pixmap animation items.
+		do
+			Result := {1}_cache
+			if Result = Void then
+				Result := <<
+ 		{4}
+				>>
+				{1}_cache := Result
+			end
+		ensure
+			{1}_attached: Result /= Void
+		end
+				
+	frozen {1}_cache: detachable ARRAY [EV_PIXMAP]
+			-- Cache access to `{2}` pixmap animation items.
+
 		]"
 
 	icon_buffer_animation_template: STRING =
 			-- Template used for access pixel buffer features
 		"[
-			frozen {1}: ARRAY [EV_PIXEL_BUFFER]
-					-- Access to '{2}' pixel buffer animation items.
-				once
-					Result := <<
-		{4}
-					>>
-				ensure
-					{1}_attached: Result /= Void
-				end
 		
-		
+	frozen {1}: ARRAY [EV_PIXEL_BUFFER]
+			-- Access to `{2}` pixel buffer animation items.
+		do
+			Result := {1}_cache
+			if Result = Void then
+				Result := <<
+ 		{4}
+				>>
+				{1}_cache := Result
+			end
+		ensure
+			{1}_attached: Result /= Void
+		end
+ 		
+	frozen {1}_cache: detachable ARRAY [EV_PIXEL_BUFFER]
+			-- Cache access to `{2}` pixel buffer animation items.
+
 		]"
 
 feature {NONE} -- Implementation: Internal cache
@@ -528,7 +557,7 @@ invariant
 	class_name_not_empty: attached class_name as n implies not n.is_empty
 
 note
-	copyright:	"Copyright (c) 1984-2018, Eiffel Software"
+	copyright:	"Copyright (c) 1984-2019, Eiffel Software"
 	license:	"GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"
 	licensing_options:	"http://www.eiffel.com/licensing"
 	copying: "[
