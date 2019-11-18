@@ -294,7 +294,7 @@ feature {NONE} -- Implementation
 			update
 		end
 
-	dpi_resize_buffer (a_dpi,a_x, a_y, area_width, area_height: INTEGER)
+	dpi_resize_buffer (a_dpi: NATURAL; a_x, a_y, area_width, area_height: INTEGER)
 			-- Resize buffer if it is smaller than `Buffer_scale_factor' times
 			-- the size given by `area_width' and `area_height'.
 		do

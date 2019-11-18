@@ -256,7 +256,7 @@ feature {NONE} -- Implementation
 			end
 		end
 
-	dpi_redraw_status_bar (a_dpi,a_x, a_y, a_width, a_height: INTEGER)
+	dpi_redraw_status_bar (a_dpi: NATURAL; a_x, a_y, a_width, a_height: INTEGER)
 			-- Called when `status_bar' must be redrawn.
 		do
 			redraw_status_bar (a_x, a_y, a_width, a_height)

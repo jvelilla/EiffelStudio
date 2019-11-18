@@ -41,7 +41,7 @@ feature {NONE} -- Implementation
 				-- The bug is: It will always set split position when left button released.
 				--             And it not care about whether if user is dragging the spliter.
 				-- So we disable "set split position to 0.5 when double presses" on GTK.
-			if l_platfoRm.is_windows then
+			if l_platform.is_windows then
 				pointer_double_press_actions.extend
 					(agent (a_x, a_y, a_button: INTEGER_32; a_x_tilt, a_y_tilt, a_pressure: REAL_64; a_screen_x, a_screen_y: INTEGER_32)
 						do set_half end)
@@ -54,7 +54,7 @@ feature {NONE} -- Implementation
 				(agent (a_x, a_y, a_width, a_height: INTEGER_32)
 					do remember_top_resize_split_area (Current) end)
 			dpi_changed_actions.extend
-				(agent (a_dpi, a_x, a_y, a_width, a_height: INTEGER_32)
+				(agent (a_dpi: NATURAL; a_x, a_y, a_width, a_height: INTEGER_32)
 					do remember_top_resize_split_area (Current) end)
 		end
 

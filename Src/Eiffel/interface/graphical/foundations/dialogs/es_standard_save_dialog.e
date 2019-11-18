@@ -31,7 +31,7 @@ feature {NONE} -- User interface initialization
 
 feature -- Access
 
-	buttons: attached DS_SET [INTEGER]
+	buttons: DS_SET [INTEGER]
 			-- <Precursor>
 		once
 			Result := dialog_buttons.save_cancel_buttons
@@ -91,7 +91,7 @@ feature {NONE} -- Internationalization
 	q_file_already_exists: STRING = "The selected file '$1' already exists.%NDo you want to contiue and overwrite this file?"
 
 ;note
-	copyright:	"Copyright (c) 1984-2016, Eiffel Software"
+	copyright:	"Copyright (c) 1984-2019, Eiffel Software"
 	license:	"GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"
 	licensing_options:	"http://www.eiffel.com/licensing"
 	copying: "[

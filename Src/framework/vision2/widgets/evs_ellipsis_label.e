@@ -47,7 +47,7 @@ feature {NONE} -- Implementation
 
 			dagt :=dpi_update_agent
 			if dagt = Void then
-				dagt := agent (i_dpi: INTEGER; i_x: INTEGER; i_y: INTEGER; i_width: INTEGER; i_height: INTEGER)
+				dagt := agent (i_dpi: NATURAL; i_x: INTEGER; i_y: INTEGER; i_width: INTEGER; i_height: INTEGER)
 						do
 							update
 						end
@@ -59,7 +59,7 @@ feature {NONE} -- Implementation
 		end
 
 	update_agent: detachable PROCEDURE [TUPLE [i_x: INTEGER; i_y: INTEGER; i_width: INTEGER; i_height: INTEGER]]
-	dpi_update_agent: detachable PROCEDURE [TUPLE [i_dpi: INTEGER; i_x: INTEGER; i_y: INTEGER; i_width: INTEGER; i_height: INTEGER]]
+	dpi_update_agent: detachable PROCEDURE [TUPLE [i_dpi: NATURAL; i_x: INTEGER; i_y: INTEGER; i_width: INTEGER; i_height: INTEGER]]
 
 feature -- Settings
 

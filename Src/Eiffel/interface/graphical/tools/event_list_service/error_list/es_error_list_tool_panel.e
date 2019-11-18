@@ -96,27 +96,27 @@ feature {NONE} -- Initialization: User interface
 
 				-- Create columns
 			l_col := a_widget.column (category_column)
-			l_col.set_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (40))
+			l_col.set_width (develop_window.scaled_size (40))
 
 			l_col := a_widget.column (rule_column)
 			l_col.set_title (interface_names.l_rule_code)
-			l_col.set_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (50))
+			l_col.set_width (develop_window.scaled_size (50))
 
 			l_col := a_widget.column (description_column)
 			l_col.set_title (interface_names.l_description)
-			l_col.set_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (100))
+			l_col.set_width (develop_window.scaled_size (100))
 
 			l_col := a_widget.column (context_column)
 			l_col.set_title (interface_names.l_location)
-			l_col.set_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (200))
+			l_col.set_width (develop_window.scaled_size (200))
 
 			l_col := a_widget.column (position_column)
 			l_col.set_title (interface_names.l_position)
-			l_col.set_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (80))
+			l_col.set_width (develop_window.scaled_size (80))
 
 			l_col := a_widget.column (severity_column)
 			l_col.set_title (interface_names.l_severity)
-			l_col.set_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (50))
+			l_col.set_width (develop_window.scaled_size (50))
 			l_col.hide
 
 			a_widget.enable_tree

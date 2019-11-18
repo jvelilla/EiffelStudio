@@ -102,7 +102,7 @@ feature {NONE} -- Initialization
 			inactive_subqueries_window.set_column_width (inactive_subqueries_window.width, 1)
 		end
 
-	dpi_resize_columns (a_dpi, a_x: INTEGER; a_y: INTEGER; a_width: INTEGER; a_height: INTEGER)
+	dpi_resize_columns (a_dpi: NATURAL; a_x: INTEGER; a_y: INTEGER; a_width: INTEGER; a_height: INTEGER)
 			-- Resize the columns for the active & inactive query lists
 		do
 			resize_columns (a_x, a_y, a_width, a_height)

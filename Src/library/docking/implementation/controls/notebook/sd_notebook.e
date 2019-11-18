@@ -332,7 +332,7 @@ feature -- Command
 			internal_tab_box.on_resize (a_x, a_y, a_width, a_height)
 		end
 
-	on_dpi_changed (a_dpi: INTEGER; a_x: INTEGER; a_y: INTEGER; a_width: INTEGER; a_height: INTEGER)
+	on_dpi_changed (a_dpi: NATURAL; a_x: INTEGER; a_y: INTEGER; a_width: INTEGER; a_height: INTEGER)
 			-- Handle resize actions
 		do
 			on_resize (a_x, a_y, a_width, a_height)

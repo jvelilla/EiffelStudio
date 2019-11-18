@@ -452,7 +452,7 @@ feature {NONE} -- Implementation
 			vertical_scrollbar.set_leap (drawing_area.height.max (1))
 		end
 
-	on_dpi_resizing (a_dpi, a_x, a_y, a_width, a_height: INTEGER)
+	on_dpi_resizing (a_dpi: NATURAL; a_x, a_y, a_width, a_height: INTEGER)
 			-- `area' has been resized.
 			-- Update scrollbars.
 		do

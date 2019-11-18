@@ -119,7 +119,7 @@ feature -- Access
 			result_not_void: Result /= Void
 		end
 
-	pointer_button_press_item_actions: EV_LITE_ACTION_SEQUENCE [TUPLE [INTEGER, INTEGER, INTEGER, detachable EV_GRID_ITEM]]
+	pointer_button_press_item_actions: EV_LITE_ACTION_SEQUENCE [TUPLE [x_pos: INTEGER; y_pos: INTEGER; a_button: INTEGER; grid_item: detachable EV_GRID_ITEM]]
 			-- Actions to be performed when a pointer press event is received by a grid.
 			-- Arguments (with names for clarity):
 			--
@@ -133,7 +133,7 @@ feature -- Access
 			result_not_void: Result /= Void
 		end
 
-	pointer_double_press_item_actions: EV_LITE_ACTION_SEQUENCE [TUPLE [INTEGER, INTEGER, INTEGER, detachable EV_GRID_ITEM]]
+	pointer_double_press_item_actions: EV_LITE_ACTION_SEQUENCE [TUPLE [x_pos: INTEGER; y_pos: INTEGER ;a_button: INTEGER; grid_item: detachable EV_GRID_ITEM]]
 			-- Actions to be performed when a pointer double press event is received by a grid.
 			-- Arguments (with names for clarity):
 			--
@@ -290,7 +290,7 @@ feature {NONE} -- Implementation
 		end
 
 note
-	copyright:	"Copyright (c) 1984-2014, Eiffel Software and others"
+	copyright:	"Copyright (c) 1984-2019, Eiffel Software and others"
 	license:	"Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"
 	source: "[
 			Eiffel Software

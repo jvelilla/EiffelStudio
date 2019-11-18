@@ -210,7 +210,7 @@ feature  -- Agents
 		end
 
 
-	on_dpi_change_resize (a_dpi,a_x: INTEGER; a_y: INTEGER; a_width: INTEGER; a_height: INTEGER; a_force: BOOLEAN)
+	on_dpi_change_resize (a_dpi: NATURAL; a_x: INTEGER; a_y: INTEGER; a_width: INTEGER; a_height: INTEGER; a_force: BOOLEAN)
 			-- Handle dpi change zone event. Resize all the widgets in fixed_area (EV_FIXED)
 		require
 			not_destroyed: not is_destroyed

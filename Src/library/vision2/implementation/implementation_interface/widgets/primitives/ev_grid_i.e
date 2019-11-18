@@ -4854,7 +4854,7 @@ feature {EV_GRID_LOCKED_I} -- Drawing implementation
 				viewport.item.height >= viewable_height)
 		end
 
-	viewport_dpi_change_resized (a_dpi,an_x, a_y, a_width, a_height: INTEGER)
+	viewport_dpi_change_resized (a_dpi: NATURAL; an_x, a_y, a_width, a_height: INTEGER)
 			-- Respond to resizing of `Viewport' to width and height `a_width', `a_height'.
 		require
 			a_width_non_negative: a_width >= 0

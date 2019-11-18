@@ -195,6 +195,9 @@ feature -- Misc.
 			if attached other.resize_actions_internal as l_event then
 				resize_actions_internal := l_event
 			end
+			if attached other.dpi_changed_actions_internal as l_event then
+				dpi_changed_actions_internal := l_event
+			end
 			if attached other.conforming_pick_actions_internal as l_event then
 				conforming_pick_actions_internal := l_event
 			end

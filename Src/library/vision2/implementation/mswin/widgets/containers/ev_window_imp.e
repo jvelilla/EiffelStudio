@@ -1218,7 +1218,7 @@ feature {EV_ANY_I} -- Implementation
 		-- and restore them in on_show if necessary.
 
 
-	on_dpi_changed (a_dpi: INTEGER)
+	on_dpi_changed (a_dpi: NATURAL)
 			-- WM_dpichange message.
 			-- This message is sent to a window whose dpi changed,
 		local
@@ -1257,10 +1257,11 @@ feature {EV_ANY_I} -- Implementation
 			end
 		end
 
-	execute_dpi_actions (a_dpi, a_width, a_height: INTEGER)
+	execute_dpi_actions (a_dpi: NATURAL; a_width, a_height: INTEGER)
 			-- execute `resize_actions_internal' if not Void.
 		do
-			trigger_resize_actions (a_width, a_height)
+			trigger_dpi_actions (a_dpi, a_width, a_height)
+--			trigger_resize_actions (a_width, a_height)
 		end
 
 feature {EV_ANY_I} -- Implementation

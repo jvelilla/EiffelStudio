@@ -25,7 +25,7 @@ feature -- Removal
 			-- Remove item at key `k'.
 		require
 			prunable: prunable
-			valid_key: valid_key (k)
+--			valid_key: valid_key (k)
 		deferred
 		end
 

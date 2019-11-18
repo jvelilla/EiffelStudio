@@ -116,13 +116,17 @@ feature {NONE} -- Basic operations
 		do
 			if a_list = Void or else not a_list.is_empty then
 				launch_session_type ({TEST_EXECUTION_I},
-					agent (a_exec: TEST_EXECUTION_I; a_dbg: BOOLEAN; a_tests: detachable SEQUENCE [TEST_I])
+					agent (a_session: TEST_SESSION_I; a_dbg: BOOLEAN; a_tests: detachable SEQUENCE [TEST_I])
 						do
-							a_exec.set_debugging (a_dbg)
-							if a_tests /= Void then
-								a_tests.do_all (agent a_exec.queue_test)
+							if attached {TEST_EXECUTION_I} a_session as a_exec then
+								a_exec.set_debugging (a_dbg)
+								if a_tests /= Void then
+									a_tests.do_all (agent a_exec.queue_test)
+								else
+									a_exec.test_suite.tests.do_all (agent a_exec.queue_test)
+								end
 							else
-								a_exec.test_suite.tests.do_all (agent a_exec.queue_test)
+								check is_execution: False end
 							end
 						end (?, a_debug, a_list))
 			end
@@ -481,7 +485,7 @@ feature {NONE} -- Internationalization
 	e_unkonwn_error: STRING = "Unable to launch processor"
 
 note
-	copyright: "Copyright (c) 1984-2018, Eiffel Software"
+	copyright: "Copyright (c) 1984-2019, Eiffel Software"
 	license:   "GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"
 	licensing_options: "http://www.eiffel.com/licensing"
 	copying: "[

@@ -1184,7 +1184,7 @@ feature {NONE} -- Action handlers
 			end
 		end
 
-	on_dpi_window_resize (a_dpi, a_x, a_y, a_width, a_height: INTEGER)
+	on_dpi_window_resize (a_dpi: NATURAL; a_x, a_y, a_width, a_height: INTEGER)
 			-- React on window resizing.
 		do
 			on_window_resize (a_x, a_y, a_width, a_height)

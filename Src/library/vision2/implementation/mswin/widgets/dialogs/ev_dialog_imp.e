@@ -503,6 +503,9 @@ feature {NONE} -- Implementation
 			if attached other_imp.resize_actions_internal as l_event then
 				resize_actions_internal := l_event
 			end
+			if attached other_imp.dpi_changed_actions_internal as l_event then
+				dpi_changed_actions_internal := l_event
+			end
 			rubber_band_is_drawn := other_imp.rubber_band_is_drawn
 			shared := other_imp.shared
 			if attached other_imp.show_actions_internal as l_event then
@@ -542,7 +545,7 @@ feature {EV_ANY, EV_ANY_I}
 			-- Interface for `Current'
 
 note
-	copyright:	"Copyright (c) 1984-2017, Eiffel Software and others"
+	copyright:	"Copyright (c) 1984-2019, Eiffel Software and others"
 	license:	"Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"
 	source: "[
 			Eiffel Software

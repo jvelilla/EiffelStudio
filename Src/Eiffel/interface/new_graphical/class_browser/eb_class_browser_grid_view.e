@@ -33,8 +33,6 @@ inherit
 
 	EB_CLASS_BROWSER_UTILITY
 
-	EB_SHARED_PIXMAPS
-
 	EB_SHARED_WRITER
 
 	EB_EDITOR_TOKEN_GRID_SUPPORT
@@ -1150,7 +1148,7 @@ invariant
 	development_window_attached: not is_recycled implies development_window /= Void
 
 note
-        copyright:	"Copyright (c) 1984-2009, Eiffel Software"
+        copyright:	"Copyright (c) 1984-2019, Eiffel Software"
         license:	"GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"
         licensing_options:	"http://www.eiffel.com/licensing"
         copying: "[

@@ -179,7 +179,7 @@ feature {NONE} -- Factory
 
 				-- Locale label
 			create l_hbox
-			l_hbox.set_padding ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size ({ES_UI_CONSTANTS}.horizontal_padding))
+			l_hbox.set_padding (develop_window.scaled_size ({ES_UI_CONSTANTS}.horizontal_padding))
 			create l_label.make_with_text (locale_formatter.translation (lb_locale) + ":")
 			l_hbox.extend (l_label)
 			l_hbox.disable_item_expand (l_label)
@@ -187,7 +187,7 @@ feature {NONE} -- Factory
 				-- Locale selection
 			create l_combo
 			l_combo.disable_edit
-			l_combo.set_minimum_width ({EV_MONITOR_DPI_DETECTOR_IMP}.scaled_size (200))
+			l_combo.set_minimum_width (develop_window.scaled_size (200))
 			register_action (l_combo.change_actions, agent on_locale_changed)
 			locale_selection := l_combo
 			l_hbox.extend (l_combo)

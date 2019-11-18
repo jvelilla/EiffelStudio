@@ -87,7 +87,7 @@ feature {NONE} -- Initialization
 			split_incre.dpi_changed_actions.extend (agent update_splitter_proportion_once_dpi_change (split_incre, {REAL_32} 0.5, ?, ?, ?, ?, ?))
 
 			gc_graphs.resize_actions.extend (agent (x, y, w, h: INTEGER_32) do analyze_gc.redraw_for_resize end)
-			gc_graphs.dpi_changed_actions.extend (agent (a_dpi, x, y, w, h: INTEGER_32) do analyze_gc.redraw_for_resize end)
+			gc_graphs.dpi_changed_actions.extend (agent (a_dpi: NATURAL; x, y, w, h: INTEGER_32) do analyze_gc.redraw_for_resize end)
 
 			search_route_button.select_actions.extend (agent search_route)
 		ensure then
@@ -182,7 +182,7 @@ feature {NONE} -- Implementation for agents
 		end
 
 
-	update_splitter_proportion_once_dpi_change (a_splitter: EV_SPLIT_AREA; a_proportion: REAL; a_dpi,x, y, w, h: INTEGER_32)
+	update_splitter_proportion_once_dpi_change (a_splitter: EV_SPLIT_AREA; a_proportion: REAL; a_dpi: NATURAL; x, y, w, h: INTEGER_32)
 			-- Set `a_splitter' with `a_proportion'.
 			-- Wipe out `a_splitter' `resize_actions' when `a_splitter' is shown.
 		do

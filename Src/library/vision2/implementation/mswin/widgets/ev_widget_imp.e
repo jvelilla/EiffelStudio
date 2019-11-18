@@ -1344,7 +1344,7 @@ feature -- Deferred features
 			end
 		end
 
-	frozen trigger_dpi_actions (a_dpi, a_width, a_height: INTEGER)
+	frozen trigger_dpi_actions (a_dpi: NATURAL; a_width, a_height: INTEGER)
 			-- `Current' has been resized.
 		require
 			exists: exists

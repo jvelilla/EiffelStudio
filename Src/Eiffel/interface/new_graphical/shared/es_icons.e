@@ -4,12 +4,12 @@
 	]"
 	generator: "Eiffel Matrix Generator"
 	command_line: "[
-		emcgen %EIFFEL_SRC%\Delivery\studio\bitmaps\png\icons.ini -f %EIFFEL_SRC%\tools\eiffel_matrix_code_generator\frames\studio_dpi.e.frame --output_file %EIFFEL_SRC%\Eiffel\interface\new_graphical\shared\es_icons.e
+		emcgen.exe C:\home\projects\dev\EiffelStudio\Src\Delivery\studio\bitmaps\png\icons.ini -f C:\home\projects\dev\EiffelStudio\Src\tools\eiffel_matrix_code_generator\frames\studio_dpi.e.frame --output_file C:\home\projects\dev\EiffelStudio\Src\Eiffel\interface\new_graphical\shared\es_icons.e
 		]"
 	status: "See notice at end of class."
 	legal: "See notice at end of class."
-	date: "$Date$"
-	revision: "$Revision$"
+	date: "$Date: $"
+	revision: "$Revision: $"
 
 class
 	ES_ICONS

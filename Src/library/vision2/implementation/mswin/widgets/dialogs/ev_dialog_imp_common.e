@@ -373,6 +373,9 @@ feature {NONE} -- Implementation
 			if attached other_imp.resize_actions_internal as l_event then
 				resize_actions_internal := l_event
 			end
+			if attached other_imp.dpi_changed_actions_internal as l_event then
+				dpi_changed_actions_internal := l_event
+			end
 
 			rubber_band_is_drawn := other_imp.rubber_band_is_drawn
 			scroller := other_imp.scroller

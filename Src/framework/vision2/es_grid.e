@@ -932,7 +932,7 @@ feature {NONE} -- Auto Events
 			end
 		end
 
-	on_dpi_resize_events (a_dpi, ax, ay, aw, ah: INTEGER)
+	on_dpi_resize_events (a_dpi: NATURAL; ax, ay, aw, ah: INTEGER)
 		do
 			on_resize_events (ax, ay, aw, ah)
 		end

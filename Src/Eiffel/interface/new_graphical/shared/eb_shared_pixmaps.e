@@ -29,19 +29,104 @@ feature -- Access
 		local
 			l_dpi: NATURAL
 		do
+			Result := mini_pixmaps_cache.item
+			if Result = Void then
+				l_dpi := {EV_MONITOR_DPI_DETECTOR_IMP}.dpi
+				if l_dpi > 108 and then l_dpi <= 120 then
+					Result := mini_pixmaps_12
+				elseif l_dpi > 132 and then l_dpi <= 144 then
+					Result := mini_pixmaps_15
+				elseif l_dpi > 144 then
+					create Result.make ("mini_20x20", 20, 20)
+				else
+					create Result.make ("mini_10x10", 10, 10)
+				end
+				if Result = Void or else Result.has_error then
+					Result := mini_pixmaps_10
+				end
+				mini_pixmaps_cache.replace (Result)
+			end
+		ensure
+			is_class: class
+		end
+
+	small_pixmaps: ES_SMALL_ICONS
+			-- Small icon pixmaps.
+		local
+			l_dpi: NATURAL
+		do
+			Result := small_pixmaps_cache.item
+			if Result = Void then
+				l_dpi := {EV_MONITOR_DPI_DETECTOR_IMP}.dpi
+				if l_dpi > 108 and then l_dpi <= 120 then
+					Result := small_pixmaps_12
+				elseif l_dpi > 132 and then l_dpi <= 144 then
+					Result := small_pixmaps_18
+				elseif l_dpi > 144 then
+					Result := small_pixmaps_24
+				else
+					create Result.make ("small_12x12", 12, 12)
+				end
+				if Result = Void or else Result.has_error then
+					Result := small_pixmaps_12
+				end
+				small_pixmaps_cache.replace (Result)
+			end
+		ensure
+			is_class: class
+		end
+
+	icon_pixmaps: ES_ICONS
+			-- Normal sized icon pixmaps.
+		local
+			l_dpi: NATURAL
+		do
+			Result := icon_pixmaps_cache.item
+			if Result = Void then
+				l_dpi := {EV_MONITOR_DPI_DETECTOR_IMP}.dpi
+				if l_dpi > 108 and then l_dpi <= 120 then
+					Result := icon_pixmaps_20
+				elseif l_dpi > 132 and then l_dpi <= 144 then
+					Result := icon_pixmaps_24
+				elseif l_dpi > 144 then
+					Result := icon_pixmaps_32
+				end
+				if Result = Void or else Result.has_error then
+					Result := icon_pixmaps_16
+				end
+				icon_pixmaps_cache.replace (Result)
+			end
+		ensure
+			is_class: class
+		end
+
+	configuration_pixmaps: ES_CONFIGURATION_PIXMAPS
+			-- Configuration system pixmaps.
+		local
+			l_dpi: NATURAL
+		do
 			l_dpi := {EV_MONITOR_DPI_DETECTOR_IMP}.dpi
 			if l_dpi > 108 and then l_dpi <= 120 then
-				Result := mini_pixmaps_12
+				Result := configuration_pixmaps_20
 			elseif l_dpi > 132 and then l_dpi <= 144 then
-				Result := mini_pixmaps_15
+				Result := configuration_pixmaps_24
 			elseif l_dpi > 144 then
-				create Result.make ("mini_20x20", 20, 20)
+				Result := configuration_pixmaps_32
 			else
-				create Result.make ("mini_10x10", 10, 10)
+				create Result.make ("icons_16x16", 16, 16)
 			end
 			if Result = Void or else Result.has_error then
-				Result := mini_pixmaps_10
+				Result := configuration_pixmaps_16
 			end
+		ensure
+			is_class: class
+		end
+
+feature {NONE} -- Implementation: mini pixmaps	
+
+	mini_pixmaps_cache: CELL [detachable ES_MINI_ICONS]
+		once
+			create Result.put (Void)
 		ensure
 			is_class: class
 		end
@@ -78,24 +163,11 @@ feature -- Access
 			is_class: class
 		end
 
-	small_pixmaps: ES_SMALL_ICONS
-			-- Small icon pixmaps.
-		local
-			l_dpi: NATURAL
-		do
-			l_dpi := {EV_MONITOR_DPI_DETECTOR_IMP}.dpi
-			if l_dpi > 108 and then l_dpi <= 120 then
-				Result := small_pixmaps_12
-			elseif l_dpi > 132 and then l_dpi <= 144 then
-				Result := small_pixmaps_18
-			elseif l_dpi > 144 then
-				Result := small_pixmaps_24
-			else
-				create Result.make ("small_12x12", 12, 12)
-			end
-			if Result = Void or else Result.has_error then
-				Result := small_pixmaps_12
-			end
+feature {NONE} -- Implementation: small pixmaps		
+
+	small_pixmaps_cache: CELL [detachable ES_SMALL_ICONS]
+		once
+			create Result.put (Void)
 		ensure
 			is_class: class
 		end
@@ -132,22 +204,11 @@ feature -- Access
 			is_class: class
 		end
 
-	icon_pixmaps: ES_ICONS
-			-- Normal sized icon pixmaps.
-		local
-			l_dpi: NATURAL
-		do
-			l_dpi := {EV_MONITOR_DPI_DETECTOR_IMP}.dpi
-			if l_dpi > 108 and then l_dpi <= 120 then
-				Result := icon_pixmaps_20
-			elseif l_dpi > 132 and then l_dpi <= 144 then
-				Result := icon_pixmaps_24
-			elseif l_dpi > 144 then
-				Result := icon_pixmaps_32
-			end
-			if Result = Void or else Result.has_error then
-				Result := icon_pixmaps_16
-			end
+feature {NONE} -- Implementation: icons pixmaps				
+
+	icon_pixmaps_cache: CELL [detachable ES_ICONS]
+		once
+			create Result.put (Void)
 		ensure
 			is_class: class
 		end
@@ -184,27 +245,7 @@ feature -- Access
 			is_class: class
 		end
 
-	configuration_pixmaps: ES_CONFIGURATION_PIXMAPS
-			-- Configuration system pixmaps.
-		local
-			l_dpi: NATURAL
-		do
-			l_dpi := {EV_MONITOR_DPI_DETECTOR_IMP}.dpi
-			if l_dpi > 108 and then l_dpi <= 120 then
-				Result := configuration_pixmaps_20
-			elseif l_dpi > 132 and then l_dpi <= 144 then
-				Result := configuration_pixmaps_24
-			elseif l_dpi > 144 then
-				Result := configuration_pixmaps_32
-			else
-				create Result.make ("icons_16x16", 16, 16)
-			end
-			if Result = Void or else Result.has_error then
-				Result := configuration_pixmaps_16
-			end
-		ensure
-			is_class: class
-		end
+feature {NONE} -- Implementation: configuration pixmaps				
 
 	configuration_pixmaps_16: ES_CONFIGURATION_PIXMAPS
 			-- Configuration system pixmaps 16px.

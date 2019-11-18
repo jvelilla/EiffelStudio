@@ -98,7 +98,7 @@ feature {NONE} -- Initialization: User interface
 					class_types_list.column (class_column).set_width (ia_width)
 				end)
 
-			register_action (class_types_list.dpi_changed_actions, agent (a_dpi,ia_1, ia_2, ia_width, ia_4: INTEGER)
+			register_action (class_types_list.dpi_changed_actions, agent (a_dpi: NATURAL; ia_1, ia_2, ia_width, ia_4: INTEGER)
 				do
 					class_types_list.column (class_column).set_width (ia_width)
 				end)

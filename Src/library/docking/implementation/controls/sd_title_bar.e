@@ -503,7 +503,7 @@ feature {NONE} -- Agents
 			end
 		end
 
-	on_dpi_change_fixed_resize (a_dpi, a_x: INTEGER_32; a_y: INTEGER_32; a_width: INTEGER_32; a_height: INTEGER_32)
+	on_dpi_change_fixed_resize (a_dpi: NATURAL; a_x: INTEGER_32; a_y: INTEGER_32; a_width: INTEGER_32; a_height: INTEGER_32)
 			-- Handle dpi changed actions.
 		do
 			on_fixed_resize (a_x, a_y, a_width, a_height)

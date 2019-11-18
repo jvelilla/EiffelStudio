@@ -125,6 +125,11 @@ feature {NONE} -- Initialization
 			symbols_grid.pointer_button_press_item_actions.extend (agent on_grid_item_single_pressed)
 
 			on_category_changed
+
+			dpi_changed_actions.extend (agent (i_dpi: NATURAL_32; i2,i3,i4,i5: INTEGER_32)
+				do
+					print ("dpi=" + i_dpi.out + "%N")
+				end)
 		end
 
 	create_interface_objects
@@ -317,8 +322,8 @@ invariant
 	has_editor: editor /= Void
 
 note
-	date: "$Date$"
-	revision: "$Revision$"
+	date: "$Date: 2019-10-15 11:48:17 -0300 (Tue, 15 Oct 2019) $"
+	revision: "$Revision: 103597 $"
 	copyright: "Copyright (c) 1984-2019, Eiffel Software"
 	license:   "GPL version 2 (see http://www.eiffel.com/licensing/gpl.txt)"
 	licensing_options: "http://www.eiffel.com/licensing"

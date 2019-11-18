@@ -66,7 +66,7 @@ feature {NONE} -- Initialization
 					resize_text (True)
 					resize_actions.resume
 				end)
-			dpi_changed_actions.extend (agent (a_dpi,a,b,c,d: INTEGER_32)
+			dpi_changed_actions.extend (agent (a_dpi: NATURAL; a,b,c,d: INTEGER_32)
 						do
 							dpi_changed_actions.block
 							resize_text (True)

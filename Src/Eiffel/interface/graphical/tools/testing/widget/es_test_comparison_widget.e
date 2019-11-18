@@ -549,7 +549,7 @@ feature {NONE} -- Events
 			end
 		end
 
-	dpi_redraw_statistic_bars (a_dpi,a_x, a_y, a_width, a_height: INTEGER; a_bar: EV_DRAWING_AREA; an_id: like statistic_count; a_new: BOOLEAN)
+	dpi_redraw_statistic_bars (a_dpi: NATURAL; a_x, a_y, a_width, a_height: INTEGER; a_bar: EV_DRAWING_AREA; an_id: like statistic_count; a_new: BOOLEAN)
 			-- Request status bar redraw.
 		require
 			a_bar_attached: a_bar /= Void

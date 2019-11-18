@@ -74,13 +74,15 @@ feature {NONE} -- Basic operations
 			--
 			-- `a_row': The row the user requested an action to be performed on.
 		local
-			l_item: EVENT_LIST_LOG_ITEM_I
 			l_prompt: ES_INFORMATION_PROMPT
 		do
-			l_item ?= a_row.data
-			check l_item_attached: l_item /= Void end
+			if attached {EVENT_LIST_LOG_ITEM_I} a_row.data as l_item then
+				create l_prompt.make_standard (l_item.description)
+			else
+				check gas_row_data: False end
+				create l_prompt.make_standard ("")
+			end
 
-			create l_prompt.make_standard (l_item.description)
 			l_prompt.set_sub_title ("Log Message")
 			l_prompt.show_on_active_window
 		end
