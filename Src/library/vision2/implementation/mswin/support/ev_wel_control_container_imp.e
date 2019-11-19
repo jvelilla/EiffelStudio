@@ -225,12 +225,13 @@ feature {NONE} -- WEL Implementation
 		end
 
 
-	on_dpi_changed (a_dpi: NATURAL)
+	on_dpi_changed (a_dpi: NATURAL; a_wp: WEL_WINDOW_POS)
 			-- WM_dpichange message.
 			-- This message is sent to a window whose dpi changed.
 		do
 			-- We don't need to handle `on_dpi_changed' as descendents do not use it.
 			-- FIXME: need more explanation.
+			on_window_pos_changed (a_wp)
 		end
 
 

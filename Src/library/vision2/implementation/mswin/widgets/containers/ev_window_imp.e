@@ -1218,7 +1218,7 @@ feature {EV_ANY_I} -- Implementation
 		-- and restore them in on_show if necessary.
 
 
-	on_dpi_changed (a_dpi: NATURAL)
+	on_dpi_changed (a_dpi: NATURAL; a_wp: WEL_WINDOW_POS)
 			-- WM_dpichange message.
 			-- This message is sent to a window whose dpi changed,
 		local

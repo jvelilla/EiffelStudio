@@ -1419,11 +1419,13 @@ feature {WEL_WINDOW} -- Messages
 
 feature {NONE} -- Messages
 
-	on_dpi_changed (a_dpi: NATURAL)
+	on_dpi_changed (a_dpi: NATURAL; window_pos: WEL_WINDOW_POS)
 			-- WM_dpichange message.
 			-- This message is sent to a window whose dpi changed,
 		require
 			exists: exists
+			window_pos_not_void: window_pos /= Void
+			window_pos_exists: window_pos.exists
 		do
 		end
 
@@ -1698,6 +1700,7 @@ feature {NONE} -- Messages
 		local
 			l_rect: WEL_RECT
 			l_dpi: NATURAL
+			l_wp: WEL_WINDOW_POS
 		do
 				-- When we handle the WM_DPICHANGED, the app it's
 				-- responsible to call SetWindowsPos and scale windows controls
@@ -1710,7 +1713,14 @@ feature {NONE} -- Messages
 			create l_rect.make_by_pointer (a_lparam)
 			move_and_resize_internal (l_rect.left, l_rect.top, l_rect.width, l_rect.height, True, 0)
 
-			on_dpi_changed (l_dpi)
+			l_wp := Window_pos_internal
+			if l_wp.item /= default_pointer then
+				create l_wp.make_by_pointer (a_lparam)
+			else
+				l_wp.set_item (a_lparam)
+			end
+
+			on_dpi_changed (l_dpi, l_wp)
 		end
 
 	dpi_scaled_size (a_dpi: NATURAL; a_size: INTEGER): INTEGER
@@ -2304,7 +2314,7 @@ feature {WEL_WINDOW} -- Windows bug workaround
 			l_flags: INTEGER
 			l_pos: WEL_WINDOW_POS
 		do
---			print ("move_and_resize_internal (x="+ a_x.out + ", y=" + a_y.out 
+--			print ("move_and_resize_internal (x="+ a_x.out + ", y=" + a_y.out
 --						+ ", w=" + a_width.out
 --						+ ", h=" + a_height.out
 --						+ ", repaint=" + repaint.out

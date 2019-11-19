@@ -215,7 +215,7 @@ feature -- DPI handling
 			Result := dpi_scaler.dpi
 		end
 
-	update_dpi (a_dpi: INTEGER)
+	update_dpi (a_dpi: NATURAL)
 		require
 			a_dpi > 0
 		local
@@ -224,10 +224,10 @@ feature -- DPI handling
 			if attached {EXECUTION_ENVIRONMENT}.item ("ISE_STUDIO_DPI") as l_forced_dpi and then l_forced_dpi.is_integer then
 				l_dpi := l_forced_dpi.to_natural_32
 				if l_dpi <= 0 then
-					l_dpi := a_dpi.to_natural_32
+					l_dpi := a_dpi
 				end
 			else
-				l_dpi := a_dpi.to_natural_32
+				l_dpi := a_dpi
 			end
 			dpi_scaler.update_dpi (l_dpi)
 		end

@@ -126,11 +126,14 @@ feature -- Status report
 			l_pixel_iterator: like {EV_PIXEL_BUFFER}.pixel_iterator
 			l_pixel: EV_PIXEL_BUFFER_PIXEL
 		do
-			create l_pixel_buffer.make_with_pixmap (sub_pixmap (create {EV_RECTANGLE}.make (a_widget.screen_x + a_x, a_widget.screen_y + a_y, 1, 1)))
+--			create l_pixel_buffer.make_with_pixmap (sub_pixmap (create {EV_RECTANGLE}.make (a_widget.screen_x + a_x, a_widget.screen_y + a_y, 1, 1)))
+			create l_pixel_buffer.make_with_pixmap (sub_pixmap (create {EV_RECTANGLE}.make (a_widget.screen_x + a_x, a_widget.screen_y + a_y, a_x, a_y)))
 			l_pixel_buffer.lock
 			l_pixel_iterator := l_pixel_buffer.pixel_iterator
-			l_pixel_iterator.set_column (1)
-			l_pixel_iterator.set_row (1)
+--			l_pixel_iterator.set_column (1)
+--			l_pixel_iterator.set_row (1)
+			l_pixel_iterator.set_column ((a_x).to_natural_32 + 1)
+			l_pixel_iterator.set_row ((a_y).to_natural_32 + 1)
 			l_pixel := l_pixel_iterator.item
 			create Result.make_with_8_bit_rgb (l_pixel.red, l_pixel.green, l_pixel.blue)
 			l_pixel_buffer.unlock
@@ -301,7 +304,7 @@ feature {NONE} -- Implementation
 		end
 
 note
-	copyright:	"Copyright (c) 1984-2018, Eiffel Software and others"
+	copyright:	"Copyright (c) 1984-2019, Eiffel Software and others"
 	license:	"Eiffel Forum License v2 (see http://www.eiffel.com/licensing/forum.txt)"
 	source: "[
 			Eiffel Software
